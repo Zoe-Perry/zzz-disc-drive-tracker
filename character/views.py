@@ -4,4 +4,5 @@ from .models import Character
 # Create your views here.
 
 class CharacterList(generic.ListView):
-    model = Character
+    queryset = Character.objects.all()
+    template_name = "character_list.html"
