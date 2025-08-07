@@ -9,7 +9,7 @@ class Character(models.Model):
     image = models.ImageField(upload_to='characters')
 
     def __str__(self):
-        return self.name
+        return self.name.name if self.name else 'No Name'
     
 class Disc(models.Model):
     id = models.IntegerField(primary_key=True)
