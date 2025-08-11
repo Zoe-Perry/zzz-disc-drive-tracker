@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <div class="image-container">
                             </div>
-                            <a href="#" class="character-link">
+                            <a href="{% url 'character_detail' character_id=character.id %}" class="character-link">
                                 <h2 class="card-title">{{ character.name }}</h2>
                             </a>
 

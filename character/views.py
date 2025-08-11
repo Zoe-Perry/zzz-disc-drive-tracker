@@ -25,6 +25,6 @@ def character_detail(request, character_id):
                 request, messages.SUCCESS,
                 'Disc Drive saved'
             )
-        form = DiscForm()
+    form = DiscForm()
     
     return render(request, 'character/character_detail.html', {'form': form, 'character': character, 'discs': discs})

@@ -1,9 +1,10 @@
-{% extends 'base_generic.html' %}  
+{% extends 'base.html' %}  
 {% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
 
+<h1>{{character.name}}</h1>
     <h2>Disc Drives:</h2>
     {% if discs %}
         <ul>
