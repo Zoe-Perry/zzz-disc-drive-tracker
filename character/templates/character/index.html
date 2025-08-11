@@ -17,6 +17,7 @@
                             </div>
                             <a href="{% url 'character_detail' character_id=character.id %}" class="character-link">
                                 <h2 class="card-title">{{ character.name }}</h2>
+                                <img src="{{ character.image.url }}" alt="{{ character.name }}">
                             </a>
 
                         </div>
