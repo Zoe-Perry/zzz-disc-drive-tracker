@@ -1,0 +1,31 @@
+{% extends 'base_generic.html' %}  
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h2>Disc Drives:</h2>
+    {% if discs %}
+        <ul>
+            {% for disc in discs %}
+                <li>
+                    <strong>{{ disc.set }}</strong> - {{ disc.main_stat }} <br>
+                    <strong>Stats:</strong> {{ disc.stat_1 }}, {{ disc.stat_2 }}, {{ disc.stat_3 }}, {{ disc.stat_4 }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No discs found for this character.</p>
+    {% endif %}
+
+    <hr>
+
+    <!-- Display the form to create a new Disc -->
+    <h2>Create a New Disc:</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form | crispy }} 
+        <button type="submit">Save Disc</button>
+    </form>
+
+{% endblock %}
