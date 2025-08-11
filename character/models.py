@@ -8,6 +8,9 @@ class Character(models.Model):
     name = models.TextField() 
     image = models.ImageField(upload_to='characters')
 
+    class Meta:
+        ordering = ["name"]
+        
     def __str__(self):
         return self.name
     

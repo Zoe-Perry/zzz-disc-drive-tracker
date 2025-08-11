@@ -1,30 +1,49 @@
 {% extends "base.html" %}
-{% load static %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 
 <!-- index.html content starts here -->
-<h1>{{ character.name }}</h1>
+<div class="container-fluid">
+    <div class="row">
 
-<!-- Display disc drives -->
-<h2>Disc Drives:</h2>
-<ul>
-    {% for disc in discs %}
-    <li>
-        <strong>{{ disc.set }}</strong> - {{ disc.main_stat }} <br>
-        <strong>Stats:</strong> {{ disc.stat_1 }}, {{ disc.stat_2 }}, {{ disc.stat_3 }}, {{ disc.stat_4 }}
-    </li>
-    {% endfor %}
-</ul>
+        <!-- Blog Entries Column -->
+        <div class="col-12 mt-3 left">
+            <div class="row">
+                {% for character in character_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                            </div>
+                            <a href="#" class="character-link">
+                                <h2 class="card-title">{{ character.name }}</h2>
+                            </a>
 
-    <!-- Display the form to create a new Disc -->
-    <h2>Create a New Disc:</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form | crispy }} 
-        <button type="submit">Save Disc</button>
-    </form>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
 
+            </div>
+        </div>
+    </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> « PREV &raquo;</a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
 
+<!-- index.html content ends here -->
 {% endblock %}
