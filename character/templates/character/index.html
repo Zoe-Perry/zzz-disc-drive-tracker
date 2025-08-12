@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<!-- Code basis for this page was used from Code Institute codestar project -->
 <!-- index.html content starts here -->
 <div class="container-fluid">
     <div class="row">
@@ -13,8 +13,6 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <div class="image-container">
-                            </div>
                             <a href="{% url 'character_detail' character_id=character.id %}" class="character-link">
                                 <h2 class="card-title">{{ character.name }}</h2>
                                 <img src="{{ character.image.url }}" alt="{{ character.name }}">
